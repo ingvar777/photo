@@ -1,13 +1,13 @@
 // Adaptive menu
 const humburger = document.querySelector(".humburger");
 const nav = document.querySelector(".nav");
-const navList = document.querySelector(".nav__list");
-const navItems = document.querySelectorAll(".nav__item");
+// const navList = document.querySelector(".nav__list");
+// const navItems = document.querySelectorAll(".nav__item");
 
 function switchMenu() {
    humburger.classList.toggle("humburger--collapsed");
    nav.classList.toggle("nav--collapsed");
-   navList.classList.toggle("nav__list--collapsed");
+   //  navList.classList.toggle("nav__list--collapsed");
 }
 humburger.addEventListener("click", switchMenu);
 
@@ -15,7 +15,7 @@ function closeMenu(event) {
    if (event.target.classList.contains("nav__link")) {
       humburger.classList.remove("humburger--collapsed");
       nav.classList.remove("nav--collapsed");
-      navList.classList.remove("nav__list--collapsed");
+      // navList.classList.remove("nav__list--collapsed");
    }
 }
 nav.addEventListener("click", closeMenu);
