@@ -1,13 +1,10 @@
 // Adaptive menu
 const humburger = document.querySelector(".humburger");
 const nav = document.querySelector(".nav");
-// const navList = document.querySelector(".nav__list");
-// const navItems = document.querySelectorAll(".nav__item");
 
 function switchMenu() {
    humburger.classList.toggle("humburger--collapsed");
    nav.classList.toggle("nav--collapsed");
-   //  navList.classList.toggle("nav__list--collapsed");
 }
 humburger.addEventListener("click", switchMenu);
 
@@ -15,33 +12,119 @@ function closeMenu(event) {
    if (event.target.classList.contains("nav__link")) {
       humburger.classList.remove("humburger--collapsed");
       nav.classList.remove("nav--collapsed");
-      // navList.classList.remove("nav__list--collapsed");
    }
 }
 nav.addEventListener("click", closeMenu);
 
+// Translate
+const en = document.querySelector(".en");
+const ru = document.querySelector(".ru");
+let lang = "en";
+
+function getTranslate(lng) {
+   const i18nList = document.querySelectorAll("[data-i18n]");
+   i18nList.forEach((el) => {
+      if (el.placeholder) {
+         el.placeholder = i18Obj[lng][el.dataset.i18n];
+         el.value = "";
+      }
+      if (el.dataset.i18n === "portfolio-image-alt") {
+         el.setAttribute("alt", i18Obj[lng][el.dataset.i18n]);
+      }
+      el.textContent = i18Obj[lng][el.dataset.i18n];
+   });
+   lang = lng;
+}
+en.addEventListener("click", () => getTranslate("en"));
+ru.addEventListener("click", () => getTranslate("ru"));
+
+function switchActiveClass(event) {
+   en.classList.remove("lang-switcher__item-active");
+   ru.classList.remove("lang-switcher__item-active");
+   this.classList.add("lang-switcher__item-active");
+}
+en.addEventListener("click", switchActiveClass);
+ru.addEventListener("click", switchActiveClass);
+
+//change image
+const portfolioBtns = document.querySelector(".portfolio-btns");
+const portfolioItems = document.querySelector(".portfolio-items");
+
+function changeImage(event) {
+   if (event.target.classList.contains("btn")) {
+      const portfolioBtnsArr = Array.from(portfolioBtns.children);
+      portfolioBtnsArr.forEach((el) => {
+         el.classList.add("btn--border");
+         event.target.classList.remove("btn--border");
+      });
+      const portfolioImagesArr = Array.from(portfolioItems.children);
+      portfolioImagesArr.forEach(
+         (el, index) =>
+            (el.src = `./assets/img/${event.target.dataset.i18n}/${
+               index + 1
+            }.jpg`)
+      );
+   }
+}
+portfolioBtns.addEventListener("click", changeImage);
+
+// cache image
+const seasons = ["winter", "spring", "summer", "autumn"];
+function preloadImages() {
+   seasons.forEach((el) => {
+      for (let i = 1; i <= 6; i++) {
+         const img = new Image();
+         img.src = `./assets/img/${el}/${i}.jpg`;
+      }
+   });
+}
+preloadImages();
+
+let isLight = false;
+const themeSwitcher = document.querySelector(".theme-switcher");
+const themeSwitcherIcon = document.querySelector(".theme-switcher__icon use");
+const themeAll = document.querySelectorAll(".theme");
+const body = document.querySelector("body");
+const sectionTitleAll = document.querySelectorAll(".section-title");
+const sectionTitleSpanAll = document.querySelectorAll(".section-title span");
+
+function switchTheme() {
+   if (!isLight) {
+      themeAll.forEach((el) => el.classList.add("light-theme"));
+      themeSwitcherIcon.href.baseVal = "./assets/svg/sprite.svg#light";
+
+      isLight = true;
+   } else {
+      themeSwitcherIcon.href.baseVal = "./assets/svg/sprite.svg#dark";
+      themeAll.forEach((el) => el.classList.remove("light-theme"));
+
+      isLight = false;
+   }
+}
+themeSwitcher.addEventListener("click", switchTheme);
+
+//localStorage
+
+function setLocalStorage() {
+   localStorage.setItem("lang", lang);
+   localStorage.setItem("theme", isLight ? "ligth" : "dark");
+}
+window.addEventListener("beforeunload", setLocalStorage);
+
+function getLocalStorage() {
+   lang = localStorage.getItem("lang");
+   getTranslate(lang);
+   if (localStorage.getItem("theme") === "ligth") {
+      switchTheme();
+   }
+}
+
+window.addEventListener("load", getLocalStorage);
+
 console.log(
-   `
-**Оценка за задание 75 баллов - все пункты выполнены**  
-1. Вёрстка соответствует макету. Ширина экрана 768px +48
-  - блок header +6
-  - секция hero +6
-  - секция skills +6
-  - секция portfolio +6
-  - секция video +6
-  - секция price +6
-  - секция contacts +6
-  - блок footer +6 
-2. Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки. Весь контент страницы при этом сохраняется: не обрезается и не удаляется +15
-  - нет полосы прокрутки при ширине страницы от 1440рх до 768рх +5
-  - нет полосы прокрутки при ширине страницы от 768рх до 480рх +5
-  - нет полосы прокрутки при ширине страницы от 480рх до 320рх +5
-3. На ширине экрана 768рх и меньше реализовано адаптивное меню +22
-  - при ширине страницы 768рх панель навигации скрывается, появляется бургер-иконка +2   
-  - при нажатии на бургер-иконку справа плавно появляется адаптивное меню, бургер-иконка изменяется на крестик +4
-  - высота адаптивного меню занимает всю высоту экрана. При ширине экрана 768-620рх вёрстка меню соответствует макету, когда экран становится уже, меню занимает всю ширину экрана +4
-  - при нажатии на крестик адаптивное меню плавно скрывается уезжая за правую часть экрана, крестик превращается в бургер-иконку +4
-  - бургер-иконка, которая при клике превращается в крестик, создана при помощи css-анимаций без использования изображений +2
-  - ссылки в адаптивном меню работают, обеспечивая плавную прокрутку по якорям +2
-  - при клике по ссылке в адаптивном меню адаптивное меню плавно скрывается, крестик превращается в бургер-иконку +4 `
+   "1) Смена изображений в секции portfolio +25;\n" +
+      "2) Перевод страницы на два языка +25;\n" +
+      "3) Переключение светлой и тёмной темы +25;\n" +
+      "4) Дополнительный функционал: выбранный пользователем язык отображения страницы и светлая или тёмная тема сохраняются при перезагрузке страницы +5;\n" +
+      "5) Дополнительный функционал: сложные эффекты для кнопок при наведении и/или клике +5.\n"
 );
