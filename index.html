@@ -1,20 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Memory Game</title>
-</head>
+  </head>
 
-<body>
-    <header></header>
-    <main></main>
-    <footer></footer>
+  <body>
+    <header class="header">Memory Game</header>
+    <main class="main">
+      <section class="movies">
+        <span>Move: </span><span class="step">0</span>
+      </section>
+      <section class="memory-game">
+        <div class="memory-card" data-face="vscode">
+          <img class="front-face" src="./assets/svg/vscode.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="vscode">
+          <img class="front-face" src="./assets/svg/vscode.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="chrome">
+          <img class="front-face" src="./assets/svg/chrome.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="chrome">
+          <img class="front-face" src="./assets/svg/chrome.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="babel">
+          <img class="front-face" src="./assets/svg/babel.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="babel">
+          <img class="front-face" src="./assets/svg/babel.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="css3">
+          <img class="front-face" src="./assets/svg/css3.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="css3">
+          <img class="front-face" src="./assets/svg/css3.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="git">
+          <img class="front-face" src="./assets/svg/git.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="git">
+          <img class="front-face" src="./assets/svg/git.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="html5">
+          <img class="front-face" src="./assets/svg/html5.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="html5">
+          <img class="front-face" src="./assets/svg/html5.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="js">
+          <img class="front-face" src="./assets/svg/js.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="js">
+          <img class="front-face" src="./assets/svg/js.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="webpack">
+          <img
+            class="front-face"
+            src="./assets/svg/webpack.svg"
+            alt="VS Code"
+          />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="webpack">
+          <img
+            class="front-face"
+            src="./assets/svg/webpack.svg"
+            alt="VS Code"
+          />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="gulp">
+          <img class="front-face" src="./assets/svg/gulp.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="gulp">
+          <img class="front-face" src="./assets/svg/gulp.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="sass">
+          <img class="front-face" src="./assets/svg/sass.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+        <div class="memory-card" data-face="sass">
+          <img class="front-face" src="./assets/svg/sass.svg" alt="VS Code" />
+          <img
+            class="back-face"
+            src="./assets/svg/back-face.svg"
+            alt="Memory Card"
+          />
+        </div>
+      </section>
+      <section></section>
+    </main>
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-data">
+          <span class="copyright">&copy;</span>
+          <span class="year">2022</span>
+        </div>
+
+        <div class="footer-data">
+          <span class="github"
+            ><a
+              class="github-link"
+              href="https://github.com/ingvar777"
+              target="_blank"
+              rel="noopener noreferrer"
+              >ingvar777</a
+            ></span
+          >
+        </div>
+        <a
+          class="rss-logo"
+          href="https://rs.school/js-stage0/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Rolling Scope School"
+        ></a>
+      </div>
+    </footer>
 
     <script src="./index.js"></script>
-</body>
-
+  </body>
 </html>
